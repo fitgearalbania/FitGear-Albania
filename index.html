@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FitGear Albania</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="fitgear.css">
+</head>
+<body>
+
+<div class="grain"></div>
+
+<header>
+  <div class="logo">
+    <div class="logo-mark">
+      <img src="images/fitgearlogo.png" alt="FitGear Albania logo">
+    </div>
+    <div class="logo-text">FITGEAR<br><span>ALBANIA</span></div>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="#products">Produktet</a></li>
+      <li><a href="#offers">Ofertat</a></li>
+      <li><a href="#checkout">Porosia</a></li>
+    </ul>
+  </nav>
+  <div class="nav-right">
+    <button class="cart-btn" onclick="openDrawer()">
+      Shporta <span class="cart-count mono" id="cartCount">0</span>
+    </button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-eyebrow">Palestër · Forcë · Disiplinë</div>
+  <h1 class="display">Pajisje qe<br><span class="line2">S'të Lëshojnë.</span></h1>
+  <p class="hero-sub">FitGear Albania sjell aksesorë palestre të dizajnuar për seri të rënda: straps, wrist wraps, doreza dhe mjete matëse — bëra për t'i qëndruar peshës, jo peshës për t'i qëndruar juve.</p>
+  <div class="hero-cta">
+    <a href="#products" class="btn-primary">Shiko Produktet</a>
+    <a href="#checkout" class="btn-ghost">Bëj Porosi</a>
+  </div>
+  <div class="hero-stats">
+    <div><b>11</b><span>Produkte Kryesore</span></div>
+    <div><b>100%</b><span>Kontroll Cilësie</span></div>
+    <div><b>24/7</b><span>Porosi Online</span></div>
+    <div><b>Free Shipping</b><span>Dërgesë e Shpejte</span></div>
+  </div>
+</section>
+
+<div class="badge-strip">
+  <div>Dërgesë në gjithë Shqipërinë</div>
+  <div>Pagesë Cash / Dorëzim</div>
+  <div>Material Rezistent</div>
+  <div>Garanci Cilësie</div>
+</div>
+
+<section class="section" id="products">
+  <div class="section-head">
+    <div>
+      <span class="tag">Katalogu</span>
+      <h2 class="display">Aksesorët e Palestrës</h2>
+    </div>
+    <p>Zgjidh produktin për të parë ngjyrat, masat dhe detajet e plota përpara se ta shtosh në listën tënde.</p>
+  </div>
+  <div class="grid" id="productGrid"></div>
+</section>
+
+<section class="section" id="offers">
+  <div class="section-head">
+    <div>
+      <span class="tag">Ofertat</span>
+      <h2 class="display">Përzgjedhje Speciale</h2>
+    </div>
+    <p>Këtu do të shfaqen ofertat speciale. Shtoni produktet tuaja të veçanta për një katalog të veçantë.</p>
+  </div>
+  <div class="grid empty-grid">
+    <div class="empty-card">
+      <p>Ofertat do të vijnë së shpejti.</p>
+      <p>Shtoni produkte të reja për të plotësuar këtë katalog.</p>
+    </div>
+  </div>
+</section>
+
+<section id="checkout" class="section">
+  <div class="section-head">
+    <div>
+      <span class="tag">Hapi i Fundit</span>
+      <h2 class="display">Përfundo Porosinë</h2>
+    </div>
+    <p>Plotëso të dhënat e tua. Porosia dërgohet direkt te ne dhe do të të kontaktojmë për konfirmim.</p>
+  </div>
+  <div class="checkout-wrap">
+    <div class="order-review">
+      <h3>Përmbledhja e Porosisë</h3>
+      <div id="reviewLines"><p class="empty-cart">Shporta është bosh. Shto produkte më sipër.</p></div>
+      <div class="review-total" id="reviewTotal" style="display:none;">
+        <span>Totali</span>
+        <span class="price" id="reviewTotalPrice">0 L</span>
+      </div>
+      <div class="free-shipping" id="freeShippingNote" style="display:none;">Free Shipping</div>
+    </div>
+    <form class="checkout-form" id="checkoutForm">
+      <div class="form-group">
+        <label>Emër Mbiemër</label>
+        <input type="text" name="Emer_Mbiemer" required placeholder="p.sh. Arben Krasniqi">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Nr. Telefoni</label>
+          <input type="tel" name="Telefoni" required placeholder="p.sh. 06X XXX XXX">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" name="Email" required placeholder="emri@gmail.com">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Adresa e Dorëzimit</label>
+        <textarea name="Adresa" rows="3" required placeholder="Qyteti, rruga, pallati/nr..."></textarea>
+      </div>
+      <input type="hidden" name="Porosia" id="orderHidden">
+      <input type="hidden" name="Totali" id="totalHidden">
+      <button type="submit" class="submit-order" id="submitOrderBtn" disabled>Dërgo Porosinë</button>
+      <div class="form-msg" id="formMsg"></div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-brand">FITGEAR <span style="color:var(--red)">ALBANIA</span></div>
+  <p>© 2026 FitGear Albania. Të gjitha të drejtat e rezervuara.</p>
+</footer>
+
+<!-- Product Modal -->
+<div class="overlay" id="overlay">
+  <div class="modal" id="modalContent"></div>
+</div>
+
+<!-- Cart Drawer -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-head">
+    <h3>Lista Jote</h3>
+    <button class="modal-close" style="position:static;" onclick="closeDrawer()">✕</button>
+  </div>
+  <div class="drawer-items" id="drawerItems"></div>
+  <div class="drawer-foot">
+    <div class="subtotal-row"><span>Nëntotali</span><span id="drawerSubtotal">0 L</span></div>
+    <div class="total-row"><span>Totali</span><span class="price" id="drawerTotal">0 L</span></div>
+    <button class="checkout-btn" id="drawerCheckoutBtn" onclick="goToCheckout()" disabled>Bli Tani</button>
+  </div>
+</div>
+
+<script src="fitgear.js"></script>
+
+</body>
+</html>
