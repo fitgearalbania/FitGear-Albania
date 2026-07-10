@@ -10,7 +10,7 @@ const PRODUCTS = [
     name:'Lifting Straps',
     price:990,
     tagline:'Për deadlift & rows të rënda',
-    description:'Strapat e forta me nylon të ndërtuar për të përmirësuar kapjen dhe për të reduktuar rrëshqitjen gjatë ngritjeve të rënda.',
+    description:'Strapsat e forta me material rezistent të ndërtuara për të përmirësuar kapjen dhe për të reduktuar rrëshqitjen gjatë ngritjeve të rënda.',
     image:'images/strapsblack.png', /* foto default e produktit */
     variantType:'color',
     colors:[
@@ -38,7 +38,7 @@ const PRODUCTS = [
     name:'Gym Gloves',
     price:990,
     tagline:'Mbrojtje dhe grip maksimal',
-    description:'Doreza me jastëkë të fortë në pëllëmbë dhe shpinë të ajrosur për mbrojtje dhe përshtatje gjatë ngritjes.',
+    description:'Doreza me material të fortë në pëllëmbë dhe shpinë të ajrosur për mbrojtje dhe përshtatje gjatë stërvitjes.',
     image:'images/glovesblack.png',
     variantType:'color-size',
     colors:[
@@ -55,8 +55,7 @@ const PRODUCTS = [
     image:'images/nasalstrips.png',
     variantType:'color',
     colors:[
-      {name:'Black', hex:'#1a1a1a', image:'images/nasalstrips.png'},
-      {name:'Transparent', hex:'linear-gradient(135deg, rgba(255,255,255,0.45), rgba(255,255,255,0.05))', image:'images/nasalstrips.png'}
+      {name:'Black', hex:'#1a1a1a', image:'images/nasalstrips.png'},
     ]
   },
   {
@@ -64,7 +63,7 @@ const PRODUCTS = [
     name:'Cante Palestre',
     price:1590,
     tagline:'Për të mbajtur sendet tuaja në palestër',
-    description:'Canta rezistente me xhepa të specializuar për shishen, telefonin dhe aromatizuesin, e përshtatshme për çdo stërvitje.',
+    description:'Canta rezistente me xhepa të specializuar për shishen, telefonin dhe këpucët, e përshtatshme për çdo stërvitje.',
     image:'images/canteblack.png',
     variantType:'color',
     colors:[
@@ -76,8 +75,8 @@ const PRODUCTS = [
     id:'shaker',
     name:'Shaker',
     price:790,
-    tagline:'Përzierje pa gunga, në çdo çantë',
-    description:'Shaker pa BPA me kapak të fortë dhe rrjetë për përzierje të shpejtë të proteinave dhe suplimenteve.',
+    tagline:'Përzierje e mirë, në çdo çantë',
+    description:'Shaker me kapak të fortë dhe rrjetë për përzierje të shpejtë të proteinave dhe suplementeve.',
     image:'images/shakerblack.png',
     variantType:'color',
     colors:[
