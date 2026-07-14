@@ -18,7 +18,7 @@ const PRODUCTS = [
     stock:4,
     variantType:'color',
     colors:[
-      {name:'Black', hex:'#1a1a1a', image:'images/strapsblack.png', inStock:true, stock:1},
+      {name:'Black', hex:'#1a1a1a', image:'images/strapsblack.png', inStock:true, stock:2},
       {name:'White', hex:'#f2f2f2', image:'images/strapswhite.png', inStock:true, stock:1},
       {name:'Camo Purple', hex:'linear-gradient(135deg,#3a1a4a,#7b3fa0,#2a0f38)', image:'images/strapspurplecamouflage.png', inStock:true, stock:1},
       {name:'Camo Red', hex:'linear-gradient(135deg,#4a0f14,#c81f2a,#2a0a0c)', image:'images/strapsredcamouflage.png', inStock:true, stock:1}
