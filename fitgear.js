@@ -159,15 +159,15 @@ const PRODUCTS = [
   {
     id:'tape',
     name:'Tapet',
-    price:1290,
+    price:1190,
     tagline:'Për mbështetje',
     description:'Tapet për mbrojtje të kyçeve dhe mbështetje më të mirë gjatë stërvitjeve intensive.',
     image:'images/tapetblack.png',
     inStock:true,
-    stock:1,
+    stock:2,
     variantType:'color',
     colors:[
-      {name:'Black', hex:'#1a1a1a', image:'images/tapetblack.png', inStock:true, stock:0},
+      {name:'Black', hex:'#1a1a1a', image:'images/tapetblack.png', inStock:true, stock:1},
       {name:'Pink', hex:'#e85d9c', image:'images/tapetpink.png', inStock:true, stock:1}
     ]
   },
