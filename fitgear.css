@@ -260,7 +260,7 @@
   .cart-item-info span{font-size:11px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:0.5px;}
   .cart-item-row{display:flex; justify-content:space-between; align-items:center; margin-top:6px;}
   .cart-item-row .price{font-size:13px;}
-  .remove-btn{background:none; color:var(--ink-faint); font-size:11px; text-decoration:underline; letter-spacing:0.5px;}
+  .remove-btn{background:none; color:var(--red); font-size:11px; text-decoration:underline; letter-spacing:0.5px;}
   .remove-btn:hover{color:var(--red);}
   .drawer-foot{padding:22px 24px 28px; border-top:1px solid var(--line);}
   .subtotal-row{display:flex; justify-content:space-between; font-size:14px; margin-bottom:6px; color:var(--ink-dim);}
