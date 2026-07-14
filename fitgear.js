@@ -235,7 +235,7 @@ const OFFERS = [
   {
     id:'gym-home-bundle',
     name:'Gym Home Bundle',
-    price:3390,
+    price:3290,
     tagline:'Për stërvitje në shtëpi',
     description:'Paketë e kombinuar për stërvitje në shtëpi, me zgjedhje për meshkuj ose femra.',
     image:'images/gymhomeboysbundle.png',
