@@ -835,4 +835,131 @@ function applyStockReservation(cartItems){
   });
 }
 
+/* ---------------- ADMIN / RESTOCK HELPERS (fix) ----------------
+   These fix the bug where editing PRODUCTS/OFFERS in the source code
+   didn't "stick" — hydrateStockState() was silently overwriting your
+   edits with whatever was saved in localStorage from past orders.
+
+   Use these from the browser console to restock items after testing
+   or when items actually come back in stock. Every call here updates
+   both the in-memory arrays AND localStorage, then re-renders the UI
+   so you don't need to refresh.
+
+   Examples:
+     restock('straps', 5);                    // set base product stock to 5
+     restock('straps', 3, 'Black');            // set Black Straps color stock to 3
+     restock('gloves', 2, 'Black', 'M');       // set Black/M glove size stock to 2
+     restock('resistance-bands', 4, null, null, 'M'); // set Male option stock to 4
+     restockOffer('grip-bundle', 5);           // set an offer/bundle stock to 5
+     resetAllStock();                          // wipe localStorage overrides entirely,
+                                                // reverting to the values hardcoded above
+------------------------------------------------------------------- */
+function findItem(id){
+  return PRODUCTS.find(p=>p.id===id) || OFFERS.find(o=>o.id===id) || null;
+}
+
+function refreshUI(){
+  // Re-render grids and cart so console changes show up immediately.
+  document.getElementById('productGrid').innerHTML = '';
+  grid.innerHTML = '';
+  PRODUCTS.forEach(p=>{
+    const variantNote = !p.variantType ? 'Pa variacione' :
+      p.variantType === 'color' ? p.colors.length + ' ngjyra' :
+      p.variantType === 'color-size' ? p.colors.length + ' ngjyra · masa S–L' :
+      p.variantType === 'option' ? 'Zgjedh M ose F' : 'Pa variacione';
+    const card = document.createElement('div');
+    const available = getAvailableQty(p, getFirstAvailableColor(p), null, getFirstAvailableOption(p)) > 0;
+    card.className = `card${available ? '' : ' is-out'}`;
+    card.onclick = ()=>{ if(available) openModal(p.id); };
+    card.innerHTML = `
+      <div class="card-media">
+        <span class="card-tag">${p.tagline}</span>
+        ${!isInStock(p) ? '<span class="status-pill">Out of stock</span>' : ''}
+        ${mediaHTML(p.image, p.name)}
+      </div>
+      <div class="card-body">
+        <h3>${p.name}</h3>
+        <p class="card-desc">${p.description}</p>
+        <div class="card-variants">${isInStock(p) ? variantNote : 'Jashtë stokut · ' + variantNote}</div>
+        <div class="card-foot">
+          <span class="price mono">${p.price} L</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </div>`;
+    grid.appendChild(card);
+  });
+  renderOffers();
+  if(currentProduct && document.getElementById('overlay').classList.contains('open')){
+    renderModal();
+  }
+  renderCart();
+}
+
+/**
+ * Restock a base product, a specific color, or a specific color+size.
+ * id: product id (e.g. 'straps')
+ * qty: new stock number to set
+ * colorName: optional color name (e.g. 'Black')
+ * size: optional size, only used with colorName for color-size products
+ * optionLabel: optional option label (e.g. 'M') for variantType 'option' products
+ */
+function restock(id, qty, colorName, size, optionLabel){
+  const product = PRODUCTS.find(p=>p.id===id);
+  if(!product){ console.warn('No product found with id', id); return; }
+  qty = Math.max(0, Number(qty) || 0);
+
+  if(optionLabel && product.options){
+    const option = product.options.find(o=>o.label===optionLabel);
+    if(!option){ console.warn('No option found:', optionLabel); return; }
+    option.stock = qty;
+    option.inStock = qty > 0;
+  } else if(colorName && product.colors){
+    const color = product.colors.find(c=>c.name===colorName);
+    if(!color){ console.warn('No color found:', colorName); return; }
+    if(size && color.sizeStock){
+      color.sizeStock[size] = qty;
+      color.inStock = Object.values(color.sizeStock).some(v => v > 0);
+    } else {
+      color.stock = qty;
+      color.inStock = qty > 0;
+    }
+  } else {
+    product.stock = qty;
+    product.inStock = qty > 0;
+  }
+
+  persistStockState();
+  refreshUI();
+  console.log(`Restocked "${product.name}" ✔`, {colorName, size, optionLabel, qty});
+}
+
+/** Restock a bundle/offer by id. */
+function restockOffer(id, qty){
+  const offer = OFFERS.find(o=>o.id===id);
+  if(!offer){ console.warn('No offer found with id', id); return; }
+  qty = Math.max(0, Number(qty) || 0);
+
+  if(offer.options){
+    console.warn('This offer has options — pass the option label too, e.g. restock via the options array manually.');
+  }
+  offer.stock = qty;
+  offer.inStock = qty > 0;
+
+  persistStockState();
+  refreshUI();
+  console.log(`Restocked offer "${offer.name}" ✔`, {qty});
+}
+
+/** Wipe all saved stock overrides in localStorage and revert to hardcoded values. */
+function resetAllStock(){
+  localStorage.removeItem(STOCK_STORAGE_KEY);
+  location.reload();
+}
+
+// Expose helpers to the console.
+window.restock = restock;
+window.restockOffer = restockOffer;
+window.resetAllStock = resetAllStock;
+window.findItem = findItem;
+
 renderCart();
