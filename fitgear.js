@@ -33,7 +33,7 @@ function doPost(e) {
    nga Hapi 3 (Deploy). Pa këtë, faqja përdor numrat nga PRODUCTS/OFFERS
    poshtë si rezervë (fallback).
    ==================================================================== */
-const SHEET_API_URL = 'https://script.google.com/macros/s/AKfycbyL_aliEZG8fQZOXSmP16vR5xJ6PwEhn9PMyn1bpfPRYoriZHm4l0lifADEjOrf6LOn/exec';
+const SHEET_API_URL = 'https://script.google.com/macros/s/AKfycbxWzETcVNhxGPnjkfZHFXjjJlCanx7NcRpdWwODINbbWecbKDPxKyl0jKfEQWUFT7AE/exec';
 
 const DEFAULT_STOCK = 10;
 const PRODUCTS = [
