@@ -146,7 +146,7 @@ const PRODUCTS = [
   {
     id:'grip-trainer',
     name:'Grip Trainer',
-    price:490,
+    price:590,
     tagline:'Për forcë të kapjes',
     description:'Një trajner i fokusuar në gripin e dorës, për të lehtësuar progresin në ngritje dhe stërvitje të përgjithshme.',
     image:'images/griptrainer.png',
@@ -160,7 +160,7 @@ const PRODUCTS = [
   {
     id:'grip-ring-egg',
     name:'Grip Ring & Egg',
-    price:490,
+    price:590,
     tagline:'Për forcim të dorës',
     description:'Paketë e thjeshtë por efektive për punën mbi dorë dhe gripin e tyre gjatë sesioneve të përsëritura.',
     image:'images/griprindandegg.png',
