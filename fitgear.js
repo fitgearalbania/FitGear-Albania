@@ -347,7 +347,7 @@ function applyStockMap(list, stockMap){
 
 /* Lexon stokun nga Google Sheets kur ngarkohet faqja */
 async function loadStockFromSheet(){
-  if(!SHEET_API_URL || SHEET_API_URL.includes('PASTE_URL_KETU')) {
+  if(!SHEET_API_URL || SHEET_API_URL.includes('https://script.google.com/macros/s/AKfycbxWzETcVNhxGPnjkfZHFXjjJlCanx7NcRpdWwODINbbWecbKDPxKyl0jKfEQWUFT7AE/exec')) {
     console.warn('SHEET_API_URL nuk është vendosur ende — po përdoren numrat nga kodi.');
     return;
   }
@@ -365,7 +365,7 @@ async function loadStockFromSheet(){
 
 /* Zbret sasinë e blerë në Google Sheets pas një porosie të suksesshme */
 async function reserveStockOnSheet(cartItems){
-  if(!SHEET_API_URL || SHEET_API_URL.includes('PASTE_URL_KETU')) return;
+  if(!SHEET_API_URL || SHEET_API_URL.includes('https://script.google.com/macros/s/AKfycbxWzETcVNhxGPnjkfZHFXjjJlCanx7NcRpdWwODINbbWecbKDPxKyl0jKfEQWUFT7AE/exec')) return;
   const items = cartItems.map(i=>({ id:i.productId, variant:i.variantLabel || '', qty:i.qty }));
   try{
     await fetch(SHEET_API_URL, { method:'POST', body: JSON.stringify(items) });
